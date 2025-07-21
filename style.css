@@ -1,14 +1,8 @@
 /* Importação de fontes do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
 
-/* Variáveis CSS (opcional, mas útil para padronizar cores) */
+/* Variáveis CSS */
 :root {
-
-    /* ... */
-    --nav-height-desktop: 80px;
-    --nav-height-mobile-expanded: 180px;
-    /* Ajuste este valor se necessário */
-
     --primary-color: #ff6f00;
     /* Laranja vibrante */
     --secondary-color: #333;
@@ -20,8 +14,11 @@
     --white: #fff;
     --dark-text: #222;
     --light-text: #555;
-    --nav-height: 80px;
-    /* Definindo uma altura para o navbar */
+
+    /* Variáveis de altura do navbar: USE APENAS ESTAS */
+    --nav-height-desktop: 80px;
+    --nav-height-mobile-expanded: 180px;
+    /* Ajuste este valor se necessário ao testar no celular */
 }
 
 /* Reset básico */
@@ -31,13 +28,14 @@
     box-sizing: border-box;
 }
 
+/* BODY - IMPORTANTE: Define o padding-top padrão para desktop. Será sobrescrito em media queries. */
 body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: var(--light-text);
     background-color: var(--white);
-    padding-top: var(--nav-height);
-    /* Adiciona padding ao body para o conteúdo não ficar atrás do navbar fixo */
+    padding-top: var(--nav-height-desktop);
+    /* Usa a variável correta para desktop */
 }
 
 .container {
@@ -113,13 +111,8 @@ p {
     color: var(--white);
     text-align: center;
     padding: 80px 0 100px;
-    /* Ajuste para espaçamento, removendo padding-top excessivo */
     position: relative;
-    /* Adicionado padding-top para compensar o navbar fixo, se o header não for fixo */
-    /* Se o header for fixo, este padding-top será para o conteúdo HERO em si */
 }
-
-
 
 .hero::before {
     content: '';
@@ -141,7 +134,6 @@ p {
     max-width: 800px;
     margin: 0 auto;
     padding-top: 0;
-    /* Removido padding-top aqui para eliminar o espaço */
 }
 
 .hero-content p {
@@ -152,53 +144,35 @@ p {
 
 .hero-video {
     position: absolute;
-    /* Tira o vídeo do fluxo normal e o posiciona no hero */
     top: 50%;
-    /* Centraliza verticalmente */
     left: 50%;
-    /* Centraliza horizontalmente */
     min-width: 100%;
-    /* Garante que cubra a largura mínima do hero */
     min-height: 100%;
-    /* Garante que cubra a altura mínima do hero */
     width: auto;
-    /* Permite que o vídeo se ajuste mantendo a proporção */
     height: auto;
-    /* Permite que o vídeo se ajuste mantendo a proporção */
     z-index: -1;
-    /* Coloca o vídeo atrás de todo o conteúdo do hero */
     transform: translate(-50%, -50%);
-    /* Ajuste final para centralização perfeita */
     object-fit: cover;
-    /* Essencial: Faz o vídeo cobrir todo o espaço, cortando se necessário, mantendo a proporção */
     filter: brightness(60%);
-    /* Opcional: Escurece o vídeo para melhorar a legibilidade do texto branco */
 }
 
-/* Navbar */
+/* NAVBAR - Regras padrão para desktop */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: var(--nav-height);
-    /* Usando a variável de altura */
+    height: var(--nav-height-desktop);
+    /* Usa a variável de altura para desktop */
     width: 100%;
     z-index: 100;
     background-color: rgba(0, 0, 0, 0.8);
-    /* Fundo um pouco mais sólido para o navbar fixo */
     position: fixed;
     /* Torna o navbar fixo no topo */
     top: 0;
     left: 0;
 }
 
-nav {
-    flex-direction: column;
-    height: auto;
-    /* Agora a altura do nav se adapta ao conteúdo */
-    padding: 15px 0;
-    /* ... */
-}
+/* REMOVIDA A DECLARAÇÃO DUPLICADA DE 'nav' AQUI */
 
 nav .container {
     display: flex;
@@ -214,7 +188,6 @@ nav .container {
     font-size: 2em;
     font-weight: 700;
     color: var(--white);
-    /* margin-left: 20px; Removido, já que o padding do container cuida disso */
 }
 
 .logo strong {
@@ -223,11 +196,11 @@ nav .container {
 
 nav ul {
     list-style: none;
-    /* margin-right: 20px; Removido, já que o padding do container cuida disso */
 }
 
 nav ul li {
     display: inline-block;
+    /* Itens do menu em linha no desktop */
     margin-left: 30px;
 }
 
@@ -320,7 +293,6 @@ nav ul li a:hover {
 .menu-item-image-placeholder {
     width: 100%;
     height: 200px;
-    /* Altura fixa para as imagens do cardápio */
     margin-bottom: 20px;
     border-radius: 8px;
     overflow: hidden;
@@ -328,14 +300,12 @@ nav ul li a:hover {
     justify-content: center;
     align-items: center;
     background-color: #eee;
-    /* Cor de fundo para placeholders */
 }
 
 .menu-item-image-placeholder img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Garante que a imagem cubra o espaço */
 }
 
 .menu-item h3 {
@@ -348,7 +318,6 @@ nav ul li a:hover {
     font-size: 0.95em;
     color: var(--light-text);
     min-height: 40px;
-    /* Garante altura mínima para descrição */
 }
 
 .menu-item .price {
@@ -377,7 +346,6 @@ nav ul li a:hover {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     height: 250px;
-    /* Altura fixa para itens da galeria */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -473,7 +441,6 @@ footer {
     font-size: 0.9em;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
     .hero {
         padding: 100px 0 80px;
@@ -488,20 +455,23 @@ footer {
         font-size: 2em;
     }
 
+    /* Regras do NAVBAR para mobile (SOBRESCRITA) */
     nav {
         flex-direction: column;
+        /* Faz os itens do nav se empilharem */
         height: auto;
-        /* Altura automática para permitir que os itens se empilhem */
+        /* IMPORTANTE: Deixa a altura se ajustar ao conteúdo */
         padding: 15px 0;
-        position: fixed;
-        /* Continua fixo */
+        /* Adiciona padding vertical */
+        /* position: fixed; e background-color já estão definidos acima, não precisam ser repetidos se não mudarem */
         background-color: rgba(0, 0, 0, 0.9);
-        /* Fundo mais sólido no mobile */
+        /* Fundo um pouco mais sólido para o navbar fixo no mobile */
     }
 
     nav .logo {
         margin-bottom: 15px;
         margin-left: 0;
+        /* Garante que o logo fique centralizado se desejar */
     }
 
     nav ul {
@@ -512,12 +482,13 @@ footer {
 
     nav ul li {
         display: block;
+        /* Cada item do menu em uma nova linha */
         margin: 10px 0;
     }
 
+    /* BODY - IMPORTANTE: Ajusta o padding-top para a altura expandida do navbar em mobile */
     body {
-        padding-top: var(--nav-height) + 40px;
-        /* Aumenta o padding para compensar nav expandido */
+        padding-top: var(--nav-height-mobile-expanded);
     }
 
     .about-us .container {
@@ -574,26 +545,8 @@ footer {
         font-size: 0.9em;
     }
 
-    body {
-        padding-top: var(--nav-height) + 60px;
-        /* Mais padding para mobile pequeno */
-    }
-}
-
-body {
-    padding-top: var(--nav-height-desktop);
-}
-
-@media (max-width: 768px) {
+    /* BODY - IMPORTANTE: Mantém o padding-top ajustado para telas menores ainda */
     body {
         padding-top: var(--nav-height-mobile-expanded);
-        /* Ajusta para a altura do mobile */
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding-top: var(--nav-height-mobile-expanded);
-        /* Mantém o ajuste */
     }
 }
