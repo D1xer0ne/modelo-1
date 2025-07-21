@@ -1,0 +1,567 @@
+/* Importação de fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+/* Variáveis CSS (opcional, mas útil para padronizar cores) */
+:root {
+    --primary-color: #ff6f00;
+    /* Laranja vibrante */
+    --secondary-color: #333;
+    /* Cinza escuro para textos */
+    --accent-color: #4CAF50;
+    /* Verde para botões de ação */
+    --light-bg: #f8f8f8;
+    /* Fundo claro para seções */
+    --white: #fff;
+    --dark-text: #222;
+    --light-text: #555;
+    --nav-height: 80px;
+    /* Definindo uma altura para o navbar */
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    color: var(--light-text);
+    background-color: var(--white);
+    padding-top: var(--nav-height);
+    /* Adiciona padding ao body para o conteúdo não ficar atrás do navbar fixo */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark-text);
+    margin-bottom: 20px;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    font-size: 3.5em;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h2 strong {
+    color: var(--primary-color);
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2em;
+    color: var(--light-text);
+    margin-bottom: 50px;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #e65100;
+    /* Laranja mais escuro no hover */
+}
+
+.btn-secondary {
+    background-color: var(--accent-color);
+    margin-top: 20px;
+}
+
+.btn-secondary:hover {
+    background-color: #388E3C;
+}
+
+/* Header - Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1920x800?text=Fundo+Lanchonete') no-repeat center center/cover;
+    color: var(--white);
+    text-align: center;
+    padding: 80px 0 100px;
+    /* Ajuste para espaçamento, removendo padding-top excessivo */
+    position: relative;
+    /* Adicionado padding-top para compensar o navbar fixo, se o header não for fixo */
+    /* Se o header for fixo, este padding-top será para o conteúdo HERO em si */
+}
+
+
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Overlay escuro */
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 0;
+    /* Removido padding-top aqui para eliminar o espaço */
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-video {
+    position: absolute;
+    /* Tira o vídeo do fluxo normal e o posiciona no hero */
+    top: 50%;
+    /* Centraliza verticalmente */
+    left: 50%;
+    /* Centraliza horizontalmente */
+    min-width: 100%;
+    /* Garante que cubra a largura mínima do hero */
+    min-height: 100%;
+    /* Garante que cubra a altura mínima do hero */
+    width: auto;
+    /* Permite que o vídeo se ajuste mantendo a proporção */
+    height: auto;
+    /* Permite que o vídeo se ajuste mantendo a proporção */
+    z-index: -1;
+    /* Coloca o vídeo atrás de todo o conteúdo do hero */
+    transform: translate(-50%, -50%);
+    /* Ajuste final para centralização perfeita */
+    object-fit: cover;
+    /* Essencial: Faz o vídeo cobrir todo o espaço, cortando se necessário, mantendo a proporção */
+    filter: brightness(60%);
+    /* Opcional: Escurece o vídeo para melhorar a legibilidade do texto branco */
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--nav-height);
+    /* Usando a variável de altura */
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Fundo um pouco mais sólido para o navbar fixo */
+    position: fixed;
+    /* Torna o navbar fixo no topo */
+    top: 0;
+    left: 0;
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    /* Garante padding horizontal para o conteúdo do nav */
+}
+
+.logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--white);
+    /* margin-left: 20px; Removido, já que o padding do container cuida disso */
+}
+
+.logo strong {
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    /* margin-right: 20px; Removido, já que o padding do container cuida disso */
+}
+
+nav ul li {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    left: 0;
+    bottom: 0;
+    transition: width .3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Seção Sobre Nós */
+.about-us {
+    background-color: var(--light-bg);
+    padding: 80px 0;
+}
+
+.about-us .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+}
+
+.about-image-placeholder,
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-image-placeholder img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.about-text h2 {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Seção Cardápio */
+.menu {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.menu-item {
+    background-color: var(--light-bg);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+}
+
+.menu-item-image-placeholder {
+    width: 100%;
+    height: 200px;
+    /* Altura fixa para as imagens do cardápio */
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    /* Cor de fundo para placeholders */
+}
+
+.menu-item-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Garante que a imagem cubra o espaço */
+}
+
+.menu-item h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--dark-text);
+}
+
+.menu-item p {
+    font-size: 0.95em;
+    color: var(--light-text);
+    min-height: 40px;
+    /* Garante altura mínima para descrição */
+}
+
+.menu-item .price {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: var(--primary-color);
+    display: block;
+    margin-top: 15px;
+}
+
+/* Seção Galeria */
+.gallery {
+    background-color: var(--light-bg);
+    padding: 80px 0;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item-placeholder {
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 250px;
+    /* Altura fixa para itens da galeria */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-item-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Seção Contato */
+.contact {
+    padding: 80px 0;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.contact-info {
+    margin-bottom: 50px;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 600;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.social-btn:hover {
+    transform: translateY(-3px);
+}
+
+.whatsapp {
+    background-color: #25d366;
+}
+
+.whatsapp:hover {
+    background-color: #128c7e;
+}
+
+.instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.instagram:hover {
+    filter: brightness(1.1);
+}
+
+.facebook {
+    background-color: #1877f2;
+}
+
+.facebook:hover {
+    background-color: #0d65d9;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 450px;
+    background-color: #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.map-placeholder iframe {
+    border: none;
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero {
+        padding: 100px 0 80px;
+        /* Ajustado para mobile */
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    nav {
+        flex-direction: column;
+        height: auto;
+        /* Altura automática para permitir que os itens se empilhem */
+        padding: 15px 0;
+        position: fixed;
+        /* Continua fixo */
+        background-color: rgba(0, 0, 0, 0.9);
+        /* Fundo mais sólido no mobile */
+    }
+
+    nav .logo {
+        margin-bottom: 15px;
+        margin-left: 0;
+    }
+
+    nav ul {
+        margin-right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    body {
+        padding-top: var(--nav-height) + 40px;
+        /* Aumenta o padding para compensar nav expandido */
+    }
+
+    .about-us .container {
+        flex-direction: column;
+    }
+
+    .about-text h2 {
+        text-align: center;
+    }
+
+    .menu-grid,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        /* Uma coluna em telas menores */
+    }
+
+    .menu-item-image-placeholder,
+    .gallery-item-placeholder {
+        height: 200px;
+        /* Ajusta altura para mobile */
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-btn {
+        width: 80%;
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 80px 0 60px;
+        /* Ajustado para telas menores ainda */
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 12px 20px;
+        font-size: 0.9em;
+    }
+
+    body {
+        padding-top: var(--nav-height) + 60px;
+        /* Mais padding para mobile pequeno */
+    }
+}
