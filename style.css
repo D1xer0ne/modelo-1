@@ -3,6 +3,12 @@
 
 /* Variáveis CSS (opcional, mas útil para padronizar cores) */
 :root {
+
+    /* ... */
+    --nav-height-desktop: 80px;
+    --nav-height-mobile-expanded: 180px;
+    /* Ajuste este valor se necessário */
+
     --primary-color: #ff6f00;
     /* Laranja vibrante */
     --secondary-color: #333;
@@ -184,6 +190,14 @@ nav {
     /* Torna o navbar fixo no topo */
     top: 0;
     left: 0;
+}
+
+nav {
+    flex-direction: column;
+    height: auto;
+    /* Agora a altura do nav se adapta ao conteúdo */
+    padding: 15px 0;
+    /* ... */
 }
 
 nav .container {
@@ -563,5 +577,23 @@ footer {
     body {
         padding-top: var(--nav-height) + 60px;
         /* Mais padding para mobile pequeno */
+    }
+}
+
+body {
+    padding-top: var(--nav-height-desktop);
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: var(--nav-height-mobile-expanded);
+        /* Ajusta para a altura do mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: var(--nav-height-mobile-expanded);
+        /* Mantém o ajuste */
     }
 }
